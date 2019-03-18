@@ -1,10 +1,15 @@
 function loadProfiles(userNames){
-    let message = "Loading " + userNames.length + " user(s)";
+
+    const MAX_USERS = 15;
   
-    _displayFlash(message);
-  
-    _fetchProfiles(userNames, function(data){
-      var profiles = data.profiles;
-      _addToPage(profiles);
-    });
+    if(userNames.length > MAX_USERS){
+        return false;
+    }
+    
+    for(let i=0; i < userNames.length; i++){
+        _fetchProfile(userNames[i], function(data){
+          _addToSidebar(userNames[i], data);
+      });
+    }
   }
+  

@@ -1,4 +1,4 @@
-function getUsersAvatars(userNames, cb){
+function getUsersAvatars(userNames){
     let url = "/userAvatars/";
     
     for(let index in userNames){
